@@ -11,13 +11,13 @@ public class BeanRepresenter{
         System.out.println(clazz.getSimpleName());
         System.out.println("+---------------------+");
         for (Field field : fields) {
-            //if (field.isAnnotationPresent(Ignore.class)) {
-            //    continue;
-            //} else {
+            if (field.isAnnotationPresent(Ignore.class)) {
+                continue;
+            } else {
             field.setAccessible(true);
             System.out.printf("|%10s | %5s   |\n",field.getName(),field.get(classes));
             System.out.println("+---------------------˥");
-        //}
+            }
         }
     }
 }
