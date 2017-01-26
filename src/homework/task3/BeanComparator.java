@@ -3,6 +3,7 @@ package homework.task3;
 import java.lang.reflect.Field;
 
 public class BeanComparator {
+    private String meaningMatch;
     public <T> void equalsValueField(T objA, T objB) throws IllegalAccessException, NoSuchFieldException {
         if(objA.getClass() != objB.getClass()){
             System.out.println("  A           B               Match");
@@ -16,9 +17,11 @@ public class BeanComparator {
             objBField.setAccessible(true);
             Object objAFieldValue = objAField.get(objA);
             Object objBFieldValue = objBField.get(objB);
-            String meaningMatch = "\uF0FB";
+
             if(objAFieldValue.equals(objBFieldValue)){
                 meaningMatch = "\uF0FC";
+            }else{
+                meaningMatch = "\uF0FB";
             }
             System.out.printf("%-15s%-11s%-11s%s\n",objAField.getName(),objAFieldValue,objBFieldValue,meaningMatch);
         }
